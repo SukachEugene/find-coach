@@ -23,7 +23,8 @@ export default {
     },
     async fetchRequests(context) {
         const coachId = context.rootGetters.userId;
-        const responce = await fetch(`https://find-a-coach-544ea-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json`);
+        const token = context.rootGetters.token;
+        const responce = await fetch(`https://find-a-coach-544ea-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json?auth=` + token);
         const responceData = await responce.json();
 
         if (!responce.ok) {

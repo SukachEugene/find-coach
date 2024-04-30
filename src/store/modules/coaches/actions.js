@@ -9,7 +9,9 @@ export default {
             areas: data.areas
         };
 
-        const responce = await fetch(`https://find-a-coach-544ea-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`, {
+        const token = context.rootGetters.token;
+
+        const responce = await fetch(`https://find-a-coach-544ea-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json?auth=` + token, {
             method: 'PUT',
             body: JSON.stringify(coachData)
         });
